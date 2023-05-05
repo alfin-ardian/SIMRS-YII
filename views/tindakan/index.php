@@ -7,8 +7,11 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\TindakanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tindakans';
-$this->params['breadcrumbs'][] = $this->title;
+$formatter = Yii::$app->formatter;
+$formatter->locale = 'id-ID';
+$formatter->currencyCode = 'Rp.';
+// $this->title = 'Tindakan';
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tindakan-index">
 
@@ -19,21 +22,31 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            [
+                'class' => 'yii\grid\SerialColumn',
+                'header' => 'No.',
+            ],
             'kode',
             'nama',
             'deskripsi:ntext',
-            'harga',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'attribute' => 'harga',
+                'value' => function ($model) use ($formatter) {
+                    return $formatter->asCurrency($model->harga);
+                },
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => ['style' => 'width: 100px;'],
+                'template' => '{view} {update} {delete}',
+            ],
         ],
     ]); ?>
 
