@@ -12,13 +12,22 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tanggal')->textInput() ?>
+    <!-- <?= $form->field($model, 'tanggal')->textInput() ?> -->
+    <?= $form->field($model, 'tanggal')->widget(\yii\jui\DatePicker::className(), [
+        'dateFormat' => 'yyyy-MM-dd', // set date format to yyyy-mm-dd
+        'options' => ['class' => 'form-control'],
+        'clientOptions' => [
+            'changeYear' => true, // allow changing year
+            'changeMonth' => true, // allow changing month
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'pasien_id')->dropDownList($listData['pasien'], ['prompt'=>'- Pilih Pasien -']) ?>
 
-    <?= $form->field($model, 'pegawai_id')->dropDownList($listData['pegawai'], ['prompt'=>'- Pilih Pegawai -']) ?>
+    <?= $form->field($model, 'pasien_id')->dropDownList($listData['pasien'], ['prompt' => '- Pilih Pasien -']) ?>
 
-    <?= $form->field($model, 'wilayah_id')->dropDownList($listData['wilayah'], ['prompt'=>'- Pilih Wilayah -']) ?>
+    <?= $form->field($model, 'pegawai_id')->dropDownList($listData['pegawai'], ['prompt' => '- Pilih Pegawai -']) ?>
+
+    <?= $form->field($model, 'wilayah_id')->dropDownList($listData['wilayah'], ['prompt' => '- Pilih Wilayah -']) ?>
 
     <?= $form->field($model, 'grand_total')->textInput() ?>
 
