@@ -38,7 +38,8 @@
     "yii2mod/yii2-markdown": "*",
     "dektrium/yii2-user": "^0.9.14",
     "mdmsoft/yii2-admin": "~2",
-    "bower-asset/fontawesome": "~4.7"
+    "bower-asset/fontawesome": "~4.7",
+    "onmotion/yii2-widget-apexcharts": "^1.0"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.1.0",

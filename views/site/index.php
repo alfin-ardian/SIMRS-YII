@@ -3,51 +3,81 @@
 /** @var yii\web\View $this */
 
 $this->title = 'SIMRS - INOVAMEDIKA';
+$series = [
+    [
+        'name' => 'Entity 1',
+        'data' => [
+            ['2018-10-04', 4.66],
+            ['2018-10-05', 5.0],
+        ],
+    ],
+    [
+        'name' => 'Entity 2',
+        'data' => [
+            ['2018-10-04', 3.88],
+            ['2018-10-05', 3.77],
+        ],
+    ],
+    [
+        'name' => 'Entity 3',
+        'data' => [
+            ['2018-10-04', 4.40],
+            ['2018-10-05', 5.0],
+        ],
+    ],
+    [
+        'name' => 'Entity 4',
+        'data' => [
+            ['2018-10-04', 4.5],
+            ['2018-10-05', 4.18],
+        ],
+    ],
+];
+
+
 ?>
 <div class="site-index">
-
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
+    <h1 class="display-4">Dashboard Grafik dan Statistik</h1>
     <div class="body-content">
-
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div id="chart" class="col-lg-12">
+                <?= \onmotion\apexcharts\ApexchartsWidget::widget([
+                    'type' => 'bar', // default area
+                    'height' => '800', // default 350
+                    'width' => '1000', // default 100%
+                    'chartOptions' => [
+                        'chart' => [
+                            'toolbar' => [
+                                'show' => true,
+                                'autoSelected' => 'zoom'
+                            ],
+                        ],
+                        'xaxis' => [
+                            'type' => 'datetime',
+                            // 'categories' => $categories,
+                        ],
+                        'plotOptions' => [
+                            'bar' => [
+                                'horizontal' => false,
+                                'endingShape' => 'rounded'
+                            ],
+                        ],
+                        'dataLabels' => [
+                            'enabled' => false
+                        ],
+                        'stroke' => [
+                            'show' => true,
+                            'colors' => ['transparent'],
+                            'curve' => 'smooth',
+                        ],
+                        'legend' => [
+                            'verticalAlign' => 'bottom',
+                            'horizontalAlign' => 'left',
+                        ],
+                    ],
+                    'series' => $series
+                ]); ?>
             </div>
         </div>
-
     </div>
 </div>
