@@ -41,6 +41,21 @@ app\themes\adminlte2\assets\AdminleAsset::register($this);
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="//via.placeholder.com/160x160" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right dropdown-user">
+                                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?= Yii::$app->urlManager->createUrl(['site/logout']) ?>" data-method="post"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
             </nav>
         </header>
