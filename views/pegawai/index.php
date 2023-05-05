@@ -7,8 +7,8 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\PegawaiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pegawais';
-$this->params['breadcrumbs'][] = $this->title;
+// $this->title = 'Pegawai';
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pegawai-index">
 
@@ -19,21 +19,27 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            [
+                'class' => 'yii\grid\SerialColumn',
+                'header' => 'No.',
+            ],
             'kode',
             'nama',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => ['style' => 'width: 100px;'],
+                'template' => '{view} {update} {delete}',
+            ],
         ],
     ]); ?>
+
 
     <?php Pjax::end(); ?>
 
