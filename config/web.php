@@ -10,8 +10,20 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@bootstrap' => '@vendor/yiisoft/yii2-bootstrap5/assets',
     ],
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap5\BootstrapAsset' => [
+                    'css' => [],
+                    'sourcePath' => null,
+                ],
+                'yii\bootstrap5\BootstrapPluginAsset' => [
+                    'sourcePath' => null,
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '5kA15qfjiNYgDjktGlS5EuHSJOOADISn',
@@ -45,7 +57,9 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [],
+            'rules' => [
+                'login' => 'site/login',
+            ],
         ],
 
     ],
