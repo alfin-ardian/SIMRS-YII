@@ -12,16 +12,12 @@ class m230503_043522_create_user_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('{{%user}}', [
+        $this->createTable('{{%users}}', [
             'id' => $this->primaryKey(),
-            'nama' => $this->string(100)->notNull(),
-            'username' => $this->string(50)->notNull()->unique(),
+            'username' => $this->string(255)->notNull(),
             'password' => $this->string(255)->notNull(),
-            'role' => $this->string(20)->notNull(),
-            'status' => $this->string(20)->notNull(),
-            'created_at' => $this->dateTime(),
-            'updated_at' => $this->dateTime(),
-            'deleted_at' => $this->dateTime(),
+            'authKey' => $this->string(255)->notNull(),
+            'accessToken' => $this->string(255)->notNull(),
         ]);
     }
 
@@ -30,6 +26,6 @@ class m230503_043522_create_user_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%user}}');
+        $this->dropTable('{{%users}}');
     }
 }
