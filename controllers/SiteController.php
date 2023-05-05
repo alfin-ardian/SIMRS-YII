@@ -19,7 +19,7 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::class,
+                'class' => AccessControl::className(),
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -30,7 +30,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::class,
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -85,6 +85,17 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    // public function actionLogin()
+    // {
+    //     $model = new LoginForm();
+    //     if ($model->load(Yii::$app->request->post()) && $model->login()) {
+    //         return $this->goBack();
+    //     }
+    //     return $this->render('login', [
+    //         'model' => $model,
+    //     ]);
+    // }
 
     /**
      * Logout action.
