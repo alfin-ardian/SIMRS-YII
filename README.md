@@ -1,6 +1,6 @@
 # SIMRS Built With Yii Framework
 
-SIMRS adalah sebuah sistem informasi online yang diperuntukan untuk Rumah Sakit sebagai rangkaian dari seleksi teknis pada PT Inova Medika.
+SIMRS adalah sebuah sistem informasi online yang diperuntukan untuk Rumah Sakit sebagai rangkaian dari seleksi teknis dari PT Inova Medika.
 
 # Hasil Screenshot
 
