@@ -57,4 +57,14 @@ class Transaksi extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Pasien::className(), ['id' => 'pasien_id']);
     }
+
+    public function getPegawai()
+    {
+        return $this->hasOne(Pegawai::className(), ['id' => 'pegawai_id']);
+    }
+
+    public function getWilayah()
+    {
+        return $this->hasOne(Wilayah::className(), ['id' => 'wilayah_id']);
+    }
 }
